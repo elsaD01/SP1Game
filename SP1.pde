@@ -3,7 +3,7 @@
 //the more click the more faster ball goes
 //if click missed lose life / hearts and meed to restart game
 int ball = 40;       
-float xpos, ypos;     
+float xPosition, yPosition;     
 
 int xyspeed = 4;  // Speed of the shape
 int xdirection = 1;  // Left or Right
@@ -20,8 +20,8 @@ void setup()
   fill(255,180,220);
   noStroke(); //remove black out line
   textSize(18);
-  xpos = width/2;
-  ypos = height/2;
+  xPosition = width/2;
+  yPosition = height/2;
   // Set the starting position of the shape
 
 }
@@ -30,18 +30,18 @@ void draw()
   background(160);
   
   // make ball change postion / follow from speed
-  xpos = xpos + ( xyspeed * xdirection );
-  ypos = ypos + ( xyspeed * ydirection );
+  xPosition = xPosition + ( xyspeed * xdirection );
+  yPosition = yPosition + ( xyspeed * ydirection );
   
   // make the balll able to bounce back if hit wall 
-  if (xpos > width-ball || xpos < ball) {
+  if (xPosition > width-ball || xPosition < ball) {
     xdirection *= -1;
   }
-  if (ypos > height-ball || ypos < ball) {
+  if (yPosition > height-ball || yPosition < ball) {
     ydirection *= -1;
   }
   //(text) to print out the top text part 
-  ellipse(xpos, ypos, ball, ball);
+  ellipse(xPosition, yPosition, ball, ball);
   text("Welcome to click the ball game! " + welcome, 10, 16);
   text("How to play: clicking on the ball level goes up, miss gameover" + welcome, 10,35);
   text("Score points : " +scorePoints,10,55);
@@ -56,7 +56,7 @@ void draw()
 }
 void mousePressed(){
   // dist = distance between two points
-  if(dist(mouseX, mouseY, xpos, ypos)<=ball){
+  if(dist(mouseX, mouseY, xPosition, yPosition)<=ball){
     
     scorePoints = scorePoints + xyspeed;
     xyspeed = xyspeed + 1; 
@@ -69,11 +69,7 @@ void mousePressed(){
     } // restset the whole game : 
     if (resetGame == true){
       loop(); //loop ttouhg the game when restart 
-      xyspeed = 4;
-      scorePoints = 0;
-      heartPoints = 4;
-      xpos = width/2;
-      ypos = height/2;
-      resetGame = false;      
+      //write the game variables down   
+ 
     }
 }
